@@ -14,7 +14,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('API')
-    .setDescription('SEINTEC STORE')
+    .setDescription('BACKEND STORE')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
