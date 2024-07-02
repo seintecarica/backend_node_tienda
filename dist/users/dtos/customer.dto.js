@@ -10,9 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateCustomerDto = exports.CreateCustomerDto = void 0;
+const openapi = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-const mapped_types_1 = require("@nestjs/mapped-types");
+const swagger_1 = require("@nestjs/swagger");
 class CreateCustomerDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { name: { required: true, type: () => String }, lastName: { required: true, type: () => String }, phone: { required: true, type: () => String } };
+    }
 }
 exports.CreateCustomerDto = CreateCustomerDto;
 __decorate([
@@ -30,7 +34,10 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateCustomerDto.prototype, "phone", void 0);
-class UpdateCustomerDto extends (0, mapped_types_1.PartialType)(CreateCustomerDto) {
+class UpdateCustomerDto extends (0, swagger_1.PartialType)(CreateCustomerDto) {
+    static _OPENAPI_METADATA_FACTORY() {
+        return {};
+    }
 }
 exports.UpdateCustomerDto = UpdateCustomerDto;
 //# sourceMappingURL=customer.dto.js.map

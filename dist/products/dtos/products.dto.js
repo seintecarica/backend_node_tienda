@@ -10,9 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateProductDto = exports.CreateProductDto = void 0;
+const openapi = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-const mapped_types_1 = require("@nestjs/mapped-types");
+const swagger_1 = require("@nestjs/swagger");
 class CreateProductDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { name: { required: true, type: () => String }, description: { required: true, type: () => String }, price: { required: true, type: () => Number, minimum: 1 }, stock: { required: true, type: () => Number, minimum: 1 }, image: { required: true, type: () => String } };
+    }
 }
 exports.CreateProductDto = CreateProductDto;
 __decorate([
@@ -42,7 +46,10 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "image", void 0);
-class UpdateProductDto extends (0, mapped_types_1.PartialType)(CreateProductDto) {
+class UpdateProductDto extends (0, swagger_1.PartialType)(CreateProductDto) {
+    static _OPENAPI_METADATA_FACTORY() {
+        return {};
+    }
 }
 exports.UpdateProductDto = UpdateProductDto;
 //# sourceMappingURL=products.dto.js.map

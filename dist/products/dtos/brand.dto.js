@@ -10,9 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateBrandDto = exports.CreateBrandDto = void 0;
+const openapi = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-const mapped_types_1 = require("@nestjs/mapped-types");
+const swagger_1 = require("@nestjs/swagger");
 class CreateBrandDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { name: { required: true, type: () => String }, image: { required: true, type: () => String } };
+    }
 }
 exports.CreateBrandDto = CreateBrandDto;
 __decorate([
@@ -25,7 +29,10 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateBrandDto.prototype, "image", void 0);
-class UpdateBrandDto extends (0, mapped_types_1.PartialType)(CreateBrandDto) {
+class UpdateBrandDto extends (0, swagger_1.PartialType)(CreateBrandDto) {
+    static _OPENAPI_METADATA_FACTORY() {
+        return {};
+    }
 }
 exports.UpdateBrandDto = UpdateBrandDto;
 //# sourceMappingURL=brand.dto.js.map

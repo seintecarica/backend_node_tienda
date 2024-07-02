@@ -8,9 +8,12 @@ import {
   ParseIntPipe,
   Delete,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+
 import { UsersService } from '../../users/services/users.service';
 import { CreateUserDto, UpdateUserDto } from '../dtos/users.dto';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private userService: UsersService) {} //Inyección de dependencia deñ Services

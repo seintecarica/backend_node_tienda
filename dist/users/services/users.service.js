@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
+const config_1 = require("@nestjs/config");
 const products_service_1 = require("./../../products/services/products.service");
 let UsersService = class UsersService {
-    constructor(productsService) {
+    constructor(productsService, configService) {
         this.productsService = productsService;
+        this.configService = configService;
         this.counterId = 1;
         this.users = [
             {
@@ -26,6 +28,8 @@ let UsersService = class UsersService {
         ];
     }
     findAll() {
+        console.log(this.configService.get('API_KEY'));
+        console.log(this.configService.get('DATABASE_NAME'));
         return this.users;
     }
     findOne(id) {
@@ -77,6 +81,7 @@ let UsersService = class UsersService {
 exports.UsersService = UsersService;
 exports.UsersService = UsersService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [products_service_1.ProductsService])
+    __metadata("design:paramtypes", [products_service_1.ProductsService,
+        config_1.ConfigService])
 ], UsersService);
 //# sourceMappingURL=users.service.js.map

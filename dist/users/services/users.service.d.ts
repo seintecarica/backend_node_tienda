@@ -1,10 +1,12 @@
+import { ConfigService } from '@nestjs/config';
 import { CreateUserDto, UpdateUserDto } from '../dtos/users.dto';
 import { User } from '../entities/user.entity';
 import { Order } from '../entities/order.entity';
 import { ProductsService } from './../../products/services/products.service';
 export declare class UsersService {
     private productsService;
-    constructor(productsService: ProductsService);
+    private configService;
+    constructor(productsService: ProductsService, configService: ConfigService);
     private counterId;
     private users;
     findAll(): User[];

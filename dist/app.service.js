@@ -14,18 +14,24 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
+const config_1 = require("./config");
 let AppService = class AppService {
-    constructor(apiKey) {
-        this.apiKey = apiKey;
+    constructor(tasks, configService) {
+        this.tasks = tasks;
+        this.configService = configService;
     }
     getHello() {
-        return `Hello World! ${this.apiKey}`;
+        const apiKey = this.configService.apiKey;
+        const name = this.configService.database.name;
+        console.log(this.tasks);
+        return `Hello World! ${apiKey} ${name}`;
     }
 };
 exports.AppService = AppService;
 exports.AppService = AppService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)('API_KEY')),
-    __metadata("design:paramtypes", [String])
+    __param(0, (0, common_1.Inject)('TASKS')),
+    __param(1, (0, common_1.Inject)(config_1.default.KEY)),
+    __metadata("design:paramtypes", [Array, void 0])
 ], AppService);
 //# sourceMappingURL=app.service.js.map
